@@ -1,0 +1,16 @@
+{
+    "name": "devomniverse/module-core",
+    "description": "DevOmniverse Core Configuration",
+    "require": {
+        "php": "~8.1.0"
+    },
+    "type": "magento2-module",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "DevOmniverse\\Core\\": ""
+        }
+    }
+}

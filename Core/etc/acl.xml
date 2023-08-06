@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--****************************************************************************
+  * DEVOMNIVERSE CONFIDENTIAL
+  * ___________________
+  *
+  * Copyright 2023 DevOmniverse
+  * All Rights Reserved.
+  *
+  * NOTICE: All information contained herein is, and remains
+  * the property of DevOmniverse and its suppliers, if any. The intellectual
+  * and technical concepts contained herein are proprietary to DevOmniverse
+  * and its suppliers and are protected by all applicable intellectual
+  * property laws, including trade secret and copyright laws.
+  * DevOmniverse permits you to use and modify this file
+  * in accordance with the terms of the DevOmniverse license agreement
+  * accompanying it (see LICENSE_DEVOMNIVERSE_PS.txt).
+  * If you have received this file from a source other than DevOmniverse,
+  * then your use, modification, or distribution of it
+  * requires the prior written permission from DevOmniverse.
+  ***************************************************************************-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="DevOmniverse_VisualSearch::config" title="VisualSearch" translate="true" sortOrder="10" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

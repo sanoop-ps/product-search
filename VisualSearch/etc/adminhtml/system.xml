@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!--****************************************************************************
+  * DEVOMNIVERSE CONFIDENTIAL
+  * ___________________
+  *
+  * Copyright 2023 DevOmniverse
+  * All Rights Reserved.
+  *
+  * NOTICE: All information contained herein is, and remains
+  * the property of DevOmniverse and its suppliers, if any. The intellectual
+  * and technical concepts contained herein are proprietary to DevOmniverse
+  * and its suppliers and are protected by all applicable intellectual
+  * property laws, including trade secret and copyright laws.
+  * DevOmniverse permits you to use and modify this file
+  * in accordance with the terms of the DevOmniverse license agreement
+  * accompanying it (see LICENSE_DEVOMNIVERSE_PS.txt).
+  * If you have received this file from a source other than DevOmniverse,
+  * then your use, modification, or distribution of it
+  * requires the prior written permission from DevOmniverse.
+  ***************************************************************************-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="visual_search" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Visual Search</label>
+            <tab>devomniverse</tab>
+            <resource>DevOmniverse_VisualSearch::config</resource>
+            <group id="vs_api_management" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Visual Search API</label>
+                <field id="vs_endpoint" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>API Endpoint</label>
+                    <comment>API URL for Retrieve Token API</comment>
+                </field>
+                <field id="vs_client_id" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Client Id</label>
+                    <comment>Header : Client Id</comment>
+                </field>
+                <field id="vs_client_secret" type="obscure" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Client Secret</label>
+                    <comment>Header : Client Secret</comment>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>
+                <field id="vs_callback_url" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Callback URL</label>
+                    <comment>Header : Callback URL</comment>
+                </field>
+                <field id="vs_auth_url" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Auth URL</label>
+                    <comment>Header : Auth URL</comment>
+                </field>
+                <field id="vs_access_token_url" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Access Token URL</label>
+                    <comment>Header : Access Token URL</comment>
+                </field>
+                <field id="vs_scope" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Scope</label>
+                    <comment>Header : Scope</comment>
+                </field>
+                <field id="vs_token_generate" translate="label" type="button" sortOrder="80" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <frontend_model>DevOmniverse\VisualSearch\Block\Adminhtml\System\Config\Api\Token</frontend_model>
+                    <label>Generate Token</label>
+                </field>
+                <field id="token" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Token</label>
+                    <comment>Bearer</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
