@@ -26,43 +26,85 @@
             <resource>DevOmniverse_VisualSearch::config</resource>
             <group id="vs_api_management" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Visual Search API</label>
-                <field id="vs_endpoint" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>API Endpoint</label>
-                    <comment>API URL for Retrieve Token API</comment>
-                </field>
-                <field id="vs_client_id" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Client Id</label>
-                    <comment>Header : Client Id</comment>
-                </field>
-                <field id="vs_client_secret" type="obscure" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Client Secret</label>
-                    <comment>Header : Client Secret</comment>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
-                </field>
-                <field id="vs_callback_url" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Callback URL</label>
-                    <comment>Header : Callback URL</comment>
-                </field>
-                <field id="vs_auth_url" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Auth URL</label>
-                    <comment>Header : Auth URL</comment>
-                </field>
-                <field id="vs_access_token_url" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Access Token URL</label>
-                    <comment>Header : Access Token URL</comment>
-                </field>
-                <field id="vs_scope" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Scope</label>
-                    <comment>Header : Scope</comment>
-                </field>
-                <field id="vs_token_generate" translate="label" type="button" sortOrder="80" showInDefault="1" showInWebsite="0" showInStore="0">
-                    <frontend_model>DevOmniverse\VisualSearch\Block\Adminhtml\System\Config\Api\Token</frontend_model>
-                    <label>Generate Token</label>
-                </field>
-                <field id="token" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Token</label>
-                    <comment>Bearer</comment>
-                </field>
+                <group id="vs_general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>General Configurations</label>
+                    <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enabled</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>visual_search/vs_general/enabled</config_path>
+                    </field>
+                    <field id="project_name" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Project Name</label>
+                        <config_path>visual_search/vs_general/project_name</config_path>
+                    </field>
+                    <field id="location" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Location</label>
+                        <config_path>visual_search/vs_general/location</config_path>
+                    </field>
+                    <field id="product_set" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Product Set</label>
+                        <config_path>visual_search/vs_general/product_set</config_path>
+                    </field>
+                </group>
+                <group id="google_storage" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Storage</label>
+                    <field id="bucket_name" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Bucket Name</label>
+                        <config_path>visual_search/google_storage/bucket_name</config_path>
+                    </field>
+                    <field id="gs_api_key" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>API Key</label>
+                        <config_path>visual_search/google_storage/gs_api_key</config_path>
+                    </field>
+                </group>
+                <group id="vs_api" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>API Configurations</label>
+                    <field id="vs_endpoint" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>API Endpoint</label>
+                        <config_path>visual_search/vs_api/vs_endpoint</config_path>
+                        <comment>API URL for Retrieve Token API</comment>
+                    </field>
+                    <field id="vs_client_id" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Client Id</label>
+                        <config_path>visual_search/vs_api/vs_client_id</config_path>
+                        <comment>Header : Client Id</comment>
+                    </field>
+                    <field id="vs_client_secret" type="obscure" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Client Secret</label>
+                        <comment>Header : Client Secret</comment>
+                        <config_path>visual_search/vs_api/vs_client_secret</config_path>
+                        <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    </field>
+                    <field id="vs_callback_url" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Callback URL</label>
+                        <config_path>visual_search/vs_api/vs_callback_url</config_path>
+                        <comment>Header : Callback URL</comment>
+                    </field>
+                    <field id="vs_auth_url" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Auth URL</label>
+                        <config_path>visual_search/vs_api/vs_auth_url</config_path>
+                        <comment>Header : Auth URL</comment>
+                    </field>
+                    <field id="vs_access_token_url" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Access Token URL</label>
+                        <config_path>visual_search/vs_api/vs_access_token_url</config_path>
+                        <comment>Header : Access Token URL</comment>
+                    </field>
+                    <field id="vs_scope" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Scope</label>
+                        <config_path>visual_search/vs_api/vs_scope</config_path>
+                        <comment>Header : Scope</comment>
+                    </field>
+                    <field id="vs_token" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Bearer Token</label>
+                        <config_path>visual_search/vs_api/vs_token</config_path>
+                        <comment>Header : Bearer Token</comment>
+                    </field>
+                    <field id="vs_token_generate" translate="label" type="button" sortOrder="80" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <frontend_model>DevOmniverse\VisualSearch\Block\Adminhtml\System\Config\Api\Token</frontend_model>
+                        <label>Generate Token</label>
+                    </field>
+                </group>
             </group>
         </section>
     </system>
