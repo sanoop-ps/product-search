@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace DevOmniverse\VisualSearch\Block\Adminhtml\System\Config\Api;
 
 use DevOmniverse\VisualSearch\Model\System\Config as ConfigHelper;
+use Exception;
 use Magento\Backend\Block\Template\Context;
-use Magento\Config\Block\System\Config\Form\Field;
 use Magento\Backend\Block\Widget\Button;
+use Magento\Config\Block\System\Config\Form\Field;
 use Magento\Framework\Data\Form\Element\AbstractElement;
+use Magento\Framework\Phrase;
 
 class Token extends Field
 {
@@ -20,10 +22,11 @@ class Token extends Field
      * @param array $data
      */
     public function __construct(
-        Context $context,
+        Context                       $context,
         private readonly ConfigHelper $configHelper,
-        array $data = []
-    ) {
+        array                         $data = []
+    )
+    {
         parent::__construct($context, $data);
     }
 
@@ -33,24 +36,18 @@ class Token extends Field
      * @param AbstractElement $element
      * @return string
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-     * @throws \Exception
+     * @throws Exception
      */
-    protected function _getElementHtml(AbstractElement $element)
+    protected function _getElementHtml(AbstractElement $element): string
     {
-        /** @var \Magento\Backend\Block\Widget\Button $buttonBlock  */
+        /** @var Button $buttonBlock */
         $buttonBlock = $this->getForm()->getLayout()->createBlock(Button::class);
 
-        $website = $buttonBlock->getRequest()->getParam('website');
-        $store   = $buttonBlock->getRequest()->getParam('store');
-
-        $params = [
-            'website' => $website,
-            'store'   => $store
-        ];
+        $params = $buttonBlock->getRequest()->getParams();
 
         $data = [
             'label' => $this->getLabel(),
-            'onclick' => "setLocation('" . $this->getTestUrl($params) . "')",
+            'onclick' => "setLocation('" . $this->getTokenUrl($params) . "')",
         ];
 
         $baseUri = $this->configHelper->getVisualSearchApiBaseUrl();
@@ -61,19 +58,17 @@ class Token extends Field
             $data['disabled'] = true;
         }
 
-        $html = $buttonBlock->setData($data)->toHtml();
-
-        return $html;
+        return $buttonBlock->setData($data)->toHtml();
     }
 
     /**
      * Retrieve button label
      *
-     * @return \Magento\Framework\Phrase
+     * @return Phrase
      */
-    public function getLabel()
+    public function getLabel(): Phrase
     {
-        return  __('Token');
+        return __('Token');
     }
 
     /**
@@ -82,8 +77,8 @@ class Token extends Field
      * @param array $params
      * @return string
      */
-    public function getTestUrl(array $params = [])
+    public function getTokenUrl(array $params = []): string
     {
-        return $this->getUrl('akeneo_connector/test', $params);
+        return $this->getUrl('visualsearch/token/create', $params);
     }
 }
